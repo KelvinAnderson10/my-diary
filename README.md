@@ -12,7 +12,7 @@ You'll need [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) 
 
 - Clone the repo: `git clone https://github.com/KelvinAnderson10/buku-harianku.git`
 - Install dependencies: `npm install`
-- Add your own following `firebase.config.js` on the root of the directory:
+- Add your own `firebase.js` in the root of the directory:
 
   ```
   // Import the functions you need from the SDKs you need
