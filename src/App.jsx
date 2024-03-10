@@ -5,9 +5,12 @@ import { Link, useNavigate } from 'react-router-dom'
 
 function App() {
   const [isAlertVisible, SetIsAlertVisible] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const onClickLogin = () => {
+    // TODO: Add firebase login method
     // SetIsAlertVisible(true)
     navigate("/home");
   }
@@ -25,11 +28,11 @@ function App() {
       {/* Form */}
       <div className="form-group">
         <label>Email</label>
-        <input className="input-block" type="email"/>
+        <input className="input-block" type="email" onChange={(e) => setEmail(e.target.value)}/>
       </div>
       <div className="form-group">
         <label>Password</label>
-        <input className="input-block" type="password"/>
+        <input className="input-block" type="password" onChange={(e) => setPassword(e.target.value)}/>
       </div>
       {/* Alert */}
       {isAlertVisible && 
@@ -44,7 +47,7 @@ function App() {
 
       {/* Login Button */}
       <button className="btn-block margin-top-large" onClick={onClickLogin}>Login</button>
-      {/* Register Button */}
+      {/* Direct to Register Link */}
       <p className='to-register'>No account yet ? <Link to="/register">Sign Up</Link></p>
     </div>
   )

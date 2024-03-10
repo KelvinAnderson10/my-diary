@@ -1,16 +1,15 @@
 import { useState } from 'react'
 import './App.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { firebaseAuth } from './firebase.config';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function Register() {
   const [isAlertVisible, SetIsAlertVisible] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-
-  const onClickLogin = () => {
-    SetIsAlertVisible(true)
-  }
 
   const onCloseAlert = (e) => {
     if (e.target.checked) {
@@ -19,19 +18,18 @@ function Register() {
   }
 
   const onSignup = async () => {
-    return createUserWithEmailAndPassword(firebaseAuth, "kelvinanderslampa17@gmail.com", "123456")
+    await createUserWithEmailAndPassword(firebaseAuth, email, password)
       .then((userCredential) => {
-        // Signed up 
+        // Success Sign Up
         const user = userCredential.user;
-        console.log("user", user);
-        // ...
+        navigate("/home");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log("error code", errorCode);
         console.log("error msg", errorMessage);
-        // ..
+        // TODO: Handle error gracefully
       });
   };
   
@@ -41,28 +39,28 @@ function Register() {
       <h3 className='page-header'>Buku Harianku !</h3>
       <h4 className='page-title'>Sign Up</h4>
       {/* Form */}
-      <div class="form-group">
-        <label>Username</label>
-        <input class="input-block" type="text"/>
+      <div className="form-group">
+        <label>Email</label>
+        <input className="input-block" type="text" onChange={(e) => setEmail(e.target.value)}/>
       </div>
-      <div class="form-group">
+      <div className="form-group">
         <label>Password</label>
-        <input class="input-block" type="password"/>
+        <input className="input-block" type="password" onChange={(e) => setPassword(e.target.value)}/>
       </div>
       {/* Alert */}
       {isAlertVisible && 
       <div>
-        <input class="alert-state" id="alert-5" type="checkbox" onChange={(e) => onCloseAlert(e)}/>
-        <div class="alert alert-danger dismissible">
+        <input className="alert-state" id="alert-5" type="checkbox" onChange={(e) => onCloseAlert(e)}/>
+        <div className="alert alert-danger dismissible">
           Password Lu Salah Kocak
-          <label class="btn-close" for="alert-5">X</label>
+          <label className="btn-close" for="alert-5">X</label>
         </div>
       </div>
       }
 
-      {/* Login Button */}
-      <button class="btn-block margin-top-large" onClick={onSignup}>Register</button>
       {/* Register Button */}
+      <button className="btn-block margin-top-large" onClick={onSignup}>Sign Up</button>
+      {/* Direct to Login Link */}
       <p className='to-register'>Already have an account ? <Link to="/">Login</Link></p>
     </div>
   )
