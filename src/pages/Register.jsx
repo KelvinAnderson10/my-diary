@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import './App.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { firebaseAuth } from './firebase.config';
+import { firebaseAuth } from '../firebase.js';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { COMMON_ERROR, FIREBASE_ERROR } from './constants/error';
+import { COMMON_ERROR, FIREBASE_ERROR } from '../utils/constants/error';
+import '../App.css'
 
 function Register() {
   const navigate = useNavigate();
@@ -28,12 +28,12 @@ function Register() {
       .catch((error) => {
         if (FIREBASE_ERROR[error.code]) {
           setErrorMsg(FIREBASE_ERROR[error.code]);
-      } else {
+        } else {
           setErrorMsg(COMMON_ERROR.INTERNAL_SERVER_ERROR);
-      }
+        }
       });
   };
-  
+
 
   return (
     <div className='paper container container-xs login-form'>
@@ -42,27 +42,27 @@ function Register() {
       {/* Form */}
       <div className="form-group">
         <label>Email</label>
-        <input className="input-block" type="text" onChange={(e) => setEmail(e.target.value)}/>
+        <input className="input-block" type="text" onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div className="form-group">
         <label>Password</label>
-        <input className="input-block" type="password" onChange={(e) => setPassword(e.target.value)}/>
+        <input className="input-block" type="password" onChange={(e) => setPassword(e.target.value)} />
       </div>
       {/* Alert */}
-      {errorMsg && 
-      <div>
-        <input className="alert-state" id="alert-5" type="checkbox" onChange={(e) => onCloseAlert(e)}/>
-        <div className="alert alert-danger dismissible">
-          {errorMsg}
-          <label className="btn-close" for="alert-5">X</label>
+      {errorMsg &&
+        <div>
+          <input className="alert-state" id="alert-5" type="checkbox" onChange={(e) => onCloseAlert(e)} />
+          <div className="alert alert-danger dismissible">
+            {errorMsg}
+            <label className="btn-close" for="alert-5">X</label>
+          </div>
         </div>
-      </div>
       }
 
       {/* Register Button */}
       <button className="btn-block margin-top-large" onClick={onSignup}>Sign Up</button>
       {/* Direct to Login Link */}
-      <p className='to-register'>Already have an account ? <Link to="/">Login</Link></p>
+      <p className='to-auth'>Already have an account ? <Link to="/">Login</Link></p>
     </div>
   )
 }
