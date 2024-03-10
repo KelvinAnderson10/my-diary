@@ -44,3 +44,8 @@ You'll need [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) 
 - [React/Redux](https://github.com/facebook/react) - Front-end framework
 - [Firebase](https://firebase.google.com) - Backend services
 - [React Quill](https://github.com/zenoamaro/react-quill) - Text editor library
+
+## License
+This project is under MIT license.
+
+If you find this website helpful, please consider [buy me a coffee](https://www.buymeacoffee.com/kelvinanderson). Thank you :)
