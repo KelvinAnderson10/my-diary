@@ -7,8 +7,10 @@ export const FIREBASE_ERROR = {
     "auth/missing-password": "Password should not be empty",
     "auth/wrong-password": "Incorrect Password",
     "auth/weak-password": "Password should be at least 6 characters.",
+    "auth/invalid-credential": "Incorrect email or password.",
+
 };
 
 export const COMMON_ERROR = {
-    INTERNAL_SERVER_ERROR : "Internal Server Error, please try again later."
+    INTERNAL_SERVER_ERROR: "Internal Server Error, please try again later."
 }
