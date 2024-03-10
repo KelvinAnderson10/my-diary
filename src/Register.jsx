@@ -3,33 +3,34 @@ import './App.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { firebaseAuth } from './firebase.config';
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { COMMON_ERROR, FIREBASE_ERROR } from './constants/error';
 
 function Register() {
-  const [isAlertVisible, SetIsAlertVisible] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  // Hooks
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const onCloseAlert = (e) => {
     if (e.target.checked) {
-      SetIsAlertVisible(false)
+      setErrorMsg('')
     }
   }
 
   const onSignup = async () => {
     await createUserWithEmailAndPassword(firebaseAuth, email, password)
       .then((userCredential) => {
-        // Success Sign Up
         const user = userCredential.user;
         navigate("/home");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log("error code", errorCode);
-        console.log("error msg", errorMessage);
-        // TODO: Handle error gracefully
+        if (FIREBASE_ERROR[error.code]) {
+          setErrorMsg(FIREBASE_ERROR[error.code]);
+      } else {
+          setErrorMsg(COMMON_ERROR.INTERNAL_SERVER_ERROR);
+      }
       });
   };
   
@@ -48,11 +49,11 @@ function Register() {
         <input className="input-block" type="password" onChange={(e) => setPassword(e.target.value)}/>
       </div>
       {/* Alert */}
-      {isAlertVisible && 
+      {errorMsg && 
       <div>
         <input className="alert-state" id="alert-5" type="checkbox" onChange={(e) => onCloseAlert(e)}/>
         <div className="alert alert-danger dismissible">
-          Password Lu Salah Kocak
+          {errorMsg}
           <label className="btn-close" for="alert-5">X</label>
         </div>
       </div>
