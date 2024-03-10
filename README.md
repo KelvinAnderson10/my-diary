@@ -48,4 +48,4 @@ You'll need [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) 
 ## License
 This project is under MIT license.
 
-If you find this website helpful, please consider [buy me a coffee](https://www.buymeacoffee.com/kelvinanderson). Thank you :)
+If you find this website helpful, please consider to [buy me a coffee](https://www.buymeacoffee.com/kelvinanderson). Thank you :)
