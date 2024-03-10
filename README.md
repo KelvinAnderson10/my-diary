@@ -1,6 +1,6 @@
 # Buku Harianku
 
-> Your everyday diary writing website with paper-like styled
+> 📖 Your everyday diary writing website with paper-like styled
 
 > [!WARNING]<br>Website is still under development
 
