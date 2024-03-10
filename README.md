@@ -1,8 +1,46 @@
-# React + Vite
+# Buku Harianku
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Your everyday diary writing website with paper-like styled
 
-Currently, two official plugins are available:
+> [!WARNING]<br>Website is still under development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Prerequisites
+
+You'll need [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) installed.
+
+## Getting Started
+
+- Clone the repo: `bla2`
+- Install dependencies: `npm install`
+- Running the project: `npm run dev`
+- Add your own following `firebase.config.js` on the root of the directory:
+
+  ```
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "firebase/app";
+  import { getAuth } from "firebase/auth"
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+      apiKey: "XXXX",
+      authDomain: "XXXX",
+      projectId: "XXXX",
+      storageBucket: "XXXX",
+      messagingSenderId: "XXXX",
+      appId: "XXXX"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  export const firebaseAuth = getAuth(app)
+  ```
+
+## Built With
+
+- [PaperCSS](https://github.com/papercss/papercss) - CSS framework
+- [React/Redux](https://github.com/facebook/react) - Front-end framework
+- [Firebase](https://firebase.google.com) - Backend services
+- [React Quill](https://github.com/zenoamaro/react-quill) - Text editor library
