@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { isCurrentDarkMode } from '../utils/theme'
+import { isCurrentDarkMode } from '../utils/helpers/Theme'
 
 const Home = () => {
     const [isDarkMode, setIsDarkMode] = useState(isCurrentDarkMode())

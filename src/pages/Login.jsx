@@ -1,22 +1,34 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '../App.css'
+import FirebaseAuthentication from "../services/firebase/FirebaseAuthentication";
+import { COMMON_ERROR, FIREBASE_ERROR } from "../utils/constants/error";
 
 const Login = () => {
-    const [isAlertVisible, SetIsAlertVisible] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const onClickLogin = () => {
-        // TODO: Add firebase login method
-        // SetIsAlertVisible(true)
-        navigate("/home");
-    };
+    // Hooks
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMsg, setErrorMsg] = useState('');
 
     const onCloseAlert = (e) => {
         if (e.target.checked) {
-            SetIsAlertVisible(false);
+            setErrorMsg('')
+        }
+    }
+
+    const onLogin = async () => {
+        try {
+            await FirebaseAuthentication.login(email, password)
+            navigate("/home");
+        } catch (error) {
+            console.log(error);
+            if (FIREBASE_ERROR[error.code]) {
+                setErrorMsg(FIREBASE_ERROR[error.code]);
+            } else {
+                setErrorMsg(COMMON_ERROR.INTERNAL_SERVER_ERROR);
+            }
         }
     };
 
@@ -42,7 +54,7 @@ const Login = () => {
                 />
             </div>
             {/* Alert */}
-            {isAlertVisible && (
+            {errorMsg && (
                 <div>
                     <input
                         className="alert-state"
@@ -51,16 +63,15 @@ const Login = () => {
                         onChange={(e) => onCloseAlert(e)}
                     />
                     <div className="alert alert-danger dismissible">
-                        Incorrect email or password.
-                        <label className="btn-close" for="alert-5">
+                        {errorMsg}
+                        <label className="btn-close" htmlFor="alert-5">
                             X
                         </label>
                     </div>
                 </div>
             )}
-
             {/* Login Button */}
-            <button className="btn-block margin-top-large" onClick={onClickLogin}>
+            <button className="btn-block margin-top-large" onClick={onLogin}>
                 Login
             </button>
             {/* Direct to Register Link */}

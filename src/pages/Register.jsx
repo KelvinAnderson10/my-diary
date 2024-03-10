@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { firebaseAuth } from '../firebase.js';
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { COMMON_ERROR, FIREBASE_ERROR } from '../utils/constants/error';
+import FirebaseAuthentication from '../services/firebase/FirebaseAuthentication';
 import '../App.css'
 
 function Register() {
@@ -20,18 +19,16 @@ function Register() {
   }
 
   const onSignup = async () => {
-    await createUserWithEmailAndPassword(firebaseAuth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        navigate("/home");
-      })
-      .catch((error) => {
-        if (FIREBASE_ERROR[error.code]) {
-          setErrorMsg(FIREBASE_ERROR[error.code]);
-        } else {
-          setErrorMsg(COMMON_ERROR.INTERNAL_SERVER_ERROR);
-        }
-      });
+    try {
+      await FirebaseAuthentication.register(email, password)
+      navigate("/home");
+    } catch (error) {
+      if (FIREBASE_ERROR[error.code]) {
+        setErrorMsg(FIREBASE_ERROR[error.code]);
+      } else {
+        setErrorMsg(COMMON_ERROR.INTERNAL_SERVER_ERROR);
+      }
+    }
   };
 
 
@@ -54,7 +51,7 @@ function Register() {
           <input className="alert-state" id="alert-5" type="checkbox" onChange={(e) => onCloseAlert(e)} />
           <div className="alert alert-danger dismissible">
             {errorMsg}
-            <label className="btn-close" for="alert-5">X</label>
+            <label className="btn-close" htmlFor="alert-5">X</label>
           </div>
         </div>
       }
