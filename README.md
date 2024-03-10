@@ -12,7 +12,6 @@ You'll need [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) 
 
 - Clone the repo: `git clone https://github.com/KelvinAnderson10/buku-harianku.git`
 - Install dependencies: `npm install`
-- Running the project: `npm run dev`
 - Add your own following `firebase.config.js` on the root of the directory:
 
   ```
@@ -37,6 +36,7 @@ You'll need [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) 
   const app = initializeApp(firebaseConfig);
   export const firebaseAuth = getAuth(app)
   ```
+- Running the project: `npm run dev`
 
 ## Built With
 
