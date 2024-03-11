@@ -1,6 +1,6 @@
-# Buku Harianku
+# Scratch Book
 
-> 📖 Your everyday diary writing website with paper-like styled
+> 📖 To help your daily writing needs, whether it's notes, to-do list, or even diary !
 
 > [!WARNING]<br>Website is still under development
 
