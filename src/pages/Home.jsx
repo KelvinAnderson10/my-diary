@@ -4,6 +4,8 @@ import '../App.css'
 import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import ImageResize from 'quill-image-resize';
+import FirebaseAuthentication from '../services/firebase/FirebaseAuthentication';
+import { useNavigate } from 'react-router-dom';
 
 Quill.register('modules/imageResize', ImageResize);
 var Size = Quill.import('attributors/style/size');
@@ -11,8 +13,12 @@ Size.whitelist = ['24px', '32px', '40px', '48px'];
 Quill.register(Size, true);
 
 const Home = () => {
+    const navigate = useNavigate()
     const [isDarkMode, setIsDarkMode] = useState(isCurrentDarkMode())
     const [notes, setNotes] = useState('');
+    const [user, setUser] = useState({
+        email: '',
+    })
 
 
     useEffect(() => {
@@ -20,7 +26,8 @@ const Home = () => {
     }, [isDarkMode])
 
     useEffect(() => {
-        FirebaseAuthentication.getCurrentUser()
+        const userInfo = FirebaseAuthentication.getCurrentUser()
+        setUser(userInfo)
     }, [])
 
     const toggleDarkMode = () => {
@@ -51,15 +58,24 @@ const Home = () => {
         'list', 'bullet',
         'image']
 
+    const onLogout = async () => {
+        try {
+            await FirebaseAuthentication.logout()
+            navigate("/login");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
 
     return (
         <div className='home'>
             <div className='nav-bar'>
-                <h4 className='page-header'>Welcome back, Kelvin Anderson</h4>
+                <h4 className='page-header'>Welcome back, {user.email.split('@')[0]}</h4>
                 {/* Toggle Dark Mode*/}
                 <div className='nav-right'>
                     <fieldset className="form-group">
-                        <label for="paperSwitch10" class="paper-switch-2-label">
+                        <label htmlFor="paperSwitch10" className="paper-switch-2-label">
                             Dark Mode
                         </label>
                         <label className="paper-switch-2">
@@ -68,7 +84,8 @@ const Home = () => {
                             <span className="paper-switch-slider round"></span>
                         </label>
                     </fieldset>
-                    <p>Logout</p>
+                    <button className='btn-small btn-danger-outline'
+                        onClick={onLogout}>Logout</button>
                 </div>
             </div>
             <div className='home-container'>
