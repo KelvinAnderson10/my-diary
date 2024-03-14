@@ -1,4 +1,4 @@
-# Scratch Book
+# My Diary
 
 > 📖 To help your daily writing needs, whether it's notes, to-do list, or even diary !
 
@@ -12,7 +12,7 @@ You'll need [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) 
 
 - Clone the repo: `git clone https://github.com/KelvinAnderson10/my-diary.git`
 - Install dependencies: `npm install`
-- Add `.env` at the root of the directory, with your own firebase project credential:
+- Add `.env` at the root of the directory, with your own firebase project configuration:
 
   ```
   VITE_API_KEY=XXXXX
@@ -22,6 +22,7 @@ You'll need [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) 
   VITE_MESSAGING_SENDER_ID=XXXXX
   VITE_APP_ID=XXXXX
   ```
+  > If you are having trouble configuring it, see the instructions [here](https://firebase.google.com/docs/web/setup)
 
 - Running the project: `npm run dev`
 
