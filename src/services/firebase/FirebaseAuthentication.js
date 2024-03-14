@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { firebaseAuth } from '../../firebase'
+import { useEffect, useState } from 'react';
 
 const register = async (email, password) => {
     try {
@@ -27,8 +28,21 @@ const logout = async () => {
     }
 };
 
+const getCurrentUser = () => {
+    const user = firebaseAuth.currentUser;
+    if (user !== null) {
+        // The user object has basic properties such as display name, email, etc.
+        // const displayName = user.displayName;
+        // const email = user.email;
+        // const photoURL = user.photoURL;
+        // const emailVerified = user.emailVerified;
+        console.log(user);
+    }
+}
+
 export default {
     register,
     login,
     logout,
+    getCurrentUser,
 };
