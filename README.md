@@ -10,7 +10,7 @@ You'll need [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) 
 
 ## Getting Started
 
-- Clone the repo: `git clone https://github.com/KelvinAnderson10/buku-harianku.git`
+- Clone the repo: `git clone https://github.com/KelvinAnderson10/my-diary.git`
 - Install dependencies: `npm install`
 - Add `.env` at the root of the directory, with your own firebase project credential:
 

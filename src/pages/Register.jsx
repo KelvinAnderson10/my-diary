@@ -34,7 +34,7 @@ function Register() {
 
   return (
     <div className='paper container container-xs login-form'>
-      <h3 className='page-header'>Buku Harianku !</h3>
+      <h3 className='page-header'>My Diary !</h3>
       <h4 className='page-title'>Sign Up</h4>
       {/* Form */}
       <div className="form-group">
