@@ -21,7 +21,7 @@ function Register() {
   const onSignup = async () => {
     try {
       await FirebaseAuthentication.register(email, password)
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       if (FIREBASE_ERROR[error.code]) {
         setErrorMsg(FIREBASE_ERROR[error.code]);
@@ -41,13 +41,13 @@ function Register() {
         <label>Email</label>
         <input className="input-block" type="text" onChange={(e) => setEmail(e.target.value)} />
       </div>
-      <div className="form-group">
+      <div className="form-group margin-top">
         <label>Password</label>
         <input className="input-block" type="password" onChange={(e) => setPassword(e.target.value)} />
       </div>
       {/* Alert */}
       {errorMsg &&
-        <div>
+        <div className="margin-top">
           <input className="alert-state" id="alert-5" type="checkbox" onChange={(e) => onCloseAlert(e)} />
           <div className="alert alert-danger dismissible">
             {errorMsg}
@@ -59,7 +59,7 @@ function Register() {
       {/* Register Button */}
       <button className="btn-block margin-top-large" onClick={onSignup}>Sign Up</button>
       {/* Direct to Login Link */}
-      <p className='to-auth'>Already have an account ? <Link to="/">Login</Link></p>
+      <p className='to-auth'>Already have an account ? <Link to="/login">Login</Link></p>
     </div>
   )
 }
