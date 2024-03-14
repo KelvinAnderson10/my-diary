@@ -13,6 +13,7 @@ const register = async (email, password) => {
 const login = async (email, password) => {
     try {
         const userCredential = await signInWithEmailAndPassword(firebaseAuth, email, password);
+        console.log(userCredential);
         return userCredential;
     } catch (error) {
         throw error;
