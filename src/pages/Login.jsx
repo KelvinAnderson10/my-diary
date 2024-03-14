@@ -6,10 +6,8 @@ import { COMMON_ERROR, FIREBASE_ERROR } from "../utils/constants/error";
 
 const Login = () => {
     const navigate = useNavigate();
-
-    // Hooks
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
 
     const onCloseAlert = (e) => {

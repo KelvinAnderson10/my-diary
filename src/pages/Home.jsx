@@ -19,6 +19,10 @@ const Home = () => {
         setIsDarkMode(isCurrentDarkMode())
     }, [isDarkMode])
 
+    useEffect(() => {
+        FirebaseAuthentication.getCurrentUser()
+    }, [])
+
     const toggleDarkMode = () => {
         localStorage.setItem('theme', isCurrentDarkMode() ? 'light' : 'dark');
         const htmlElement = document.querySelector('html');

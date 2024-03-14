@@ -12,30 +12,17 @@ You'll need [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) 
 
 - Clone the repo: `git clone https://github.com/KelvinAnderson10/buku-harianku.git`
 - Install dependencies: `npm install`
-- Add `firebase.js` with your own firebase cred in the root of the directory:
+- Add `.env` at the root of the directory, with your own firebase project credential:
 
   ```
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "firebase/app";
-  import { getAuth } from "firebase/auth"
-
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-      apiKey: "XXXX",
-      authDomain: "XXXX",
-      projectId: "XXXX",
-      storageBucket: "XXXX",
-      messagingSenderId: "XXXX",
-      appId: "XXXX"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  export const firebaseAuth = getAuth(app)
+  VITE_API_KEY=XXXXX
+  VITE_AUTH_DOMAIN=XXXXX
+  VITE_PROJECT_ID=XXXXX
+  VITE_STORAGE_BUCKET=XXXXX
+  VITE_MESSAGING_SENDER_ID=XXXXX
+  VITE_APP_ID=XXXXX
   ```
+
 - Running the project: `npm run dev`
 
 ## Built With
@@ -46,6 +33,7 @@ You'll need [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) 
 - [React Quill](https://github.com/zenoamaro/react-quill) - Text editor library
 
 ## License
+
 This project is under MIT license.
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/kelvinanderson)
