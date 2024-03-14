@@ -1,0 +1,23 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Neucha", sans-serif;
+}
+
+.page-header {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
+.to-auth {
+  text-align: right;
+}
