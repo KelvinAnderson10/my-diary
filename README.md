@@ -1,7 +1,9 @@
 # My Diary
 
-> 📖 To help your daily writing needs, whether it's notes, to-do list, or even diary !
+> 📖  It's all about writing on a digital diary that's more than just a boring text doc. We're talking about paper-like website, and of course write without any judgement. Don't worry, it's all encrypted, so your secrets are safer than a squirrel's stash. 🧷
 
+## Demo
+https://my-diary-nine.vercel.app/
 > [!WARNING]<br>Website is still under development
 
 ## Prerequisites
