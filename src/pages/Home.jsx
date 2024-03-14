@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { isCurrentDarkMode } from '../utils/helpers/Theme'
+import FirebaseAuthentication from '../services/firebase/FirebaseAuthentication'
 
 const Home = () => {
     const [isDarkMode, setIsDarkMode] = useState(isCurrentDarkMode())
@@ -7,6 +8,10 @@ const Home = () => {
     useEffect(() => {
         setIsDarkMode(isCurrentDarkMode())
     }, [isDarkMode])
+
+    useEffect(() => {
+        FirebaseAuthentication.getCurrentUser()
+    }, [])
 
     const toggleDarkMode = () => {
         localStorage.setItem('theme', isCurrentDarkMode() ? 'light' : 'dark');
