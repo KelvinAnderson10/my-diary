@@ -14,6 +14,7 @@ const register = async (email, password) => {
 const login = async (email, password) => {
     try {
         const userCredential = await signInWithEmailAndPassword(firebaseAuth, email, password);
+        console.log(userCredential);
         return userCredential;
     } catch (error) {
         throw error;
@@ -30,14 +31,7 @@ const logout = async () => {
 
 const getCurrentUser = () => {
     const user = firebaseAuth.currentUser;
-    if (user !== null) {
-        // The user object has basic properties such as display name, email, etc.
-        // const displayName = user.displayName;
-        // const email = user.email;
-        // const photoURL = user.photoURL;
-        // const emailVerified = user.emailVerified;
-        console.log(user);
-    }
+    return user;
 }
 
 export default {

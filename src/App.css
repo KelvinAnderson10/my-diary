@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   font-family: "Neucha", sans-serif;
+  overflow: hidden;
 }
 
 .page-header {
@@ -20,4 +21,150 @@
 
 .to-auth {
   text-align: right;
+}
+
+.home {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.left-container {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+  overflow-y: auto;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.left-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.left-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.right-container {
+  width: 70%;
+  height: 100%;
+  margin: auto;
+}
+
+.quill {
+  height: 60vh;
+  max-height: 60vh;
+  font-family: "Neucha", sans-serif !important;
+}
+
+.ql-editor::-webkit-scrollbar {
+  display: none;
+}
+
+.ql-editor {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.ql-container.ql-snow {
+  border: none !important;
+  max-height: 80%;
+  margin-left: 2%;
+  font-family: "Neucha", sans-serif !important;
+}
+
+.ql-container {
+  font-size: inherit !important
+}
+
+.ql-toolbar.ql-snow {
+  margin-top: 2%;
+  margin-left: 2%;
+  border: none !important;
+}
+
+.dark .ql-picker-label::before {
+  color: white !important;
+}
+
+.dark .ql-picker-label svg {
+  color: white !important;
+}
+
+.dark .ql-stroke {
+  stroke: white !important;
+}
+
+.dark .ql-editor[data-placeholder]:before {
+  color: white !important;
+  opacity: 0.5;
+}
+
+.ql-snow{
+  .ql-picker{
+      &.ql-size{
+          .ql-picker-label,
+          .ql-picker-item{
+              &::before{
+                  content: attr(data-value) !important;
+              }
+          }
+      }
+  }
+}
+
+.nav-bar {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 3%;
+  padding-right: 5%;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 0 !important;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.content-list {
+  height: 15%;
+  width: 100%;
+  overflow: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.date {
+  font-size: 16px;
+  align-self: flex-end;
+}
+
+.content-list p {
+  margin: 0;
 }

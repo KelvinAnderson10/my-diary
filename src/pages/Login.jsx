@@ -19,7 +19,7 @@ const Login = () => {
     const onLogin = async () => {
         try {
             await FirebaseAuthentication.login(email, password)
-            navigate("/home");
+            navigate("/");
         } catch (error) {
             console.log(error);
             if (FIREBASE_ERROR[error.code]) {
@@ -43,7 +43,7 @@ const Login = () => {
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </div>
-            <div className="form-group">
+            <div className="form-group margin-top">
                 <label>Password</label>
                 <input
                     className="input-block"
@@ -53,7 +53,7 @@ const Login = () => {
             </div>
             {/* Alert */}
             {errorMsg && (
-                <div>
+                <div className="margin-top">
                     <input
                         className="alert-state"
                         id="alert-5"
